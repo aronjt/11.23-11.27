@@ -6,5 +6,4 @@ public abstract class DoorsAndWIndows {
 
     public abstract boolean isOpen();
     public abstract void close();
-    //public abstract void open();
 }
