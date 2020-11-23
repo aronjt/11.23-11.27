@@ -6,8 +6,8 @@ import java.util.List;
 public class House {
 
     private boolean isHeating;
-    private List<DoorsAndWIndows> secondFloor = new ArrayList<>();
-    private List<DoorsAndWIndows> firstFloor = new ArrayList<>();
+    private final List<DoorsAndWIndows> secondFloor = new ArrayList<>();
+    private final List<DoorsAndWIndows> firstFloor = new ArrayList<>();
 
     public House() {
         double random = Math.random();
@@ -65,5 +65,17 @@ public class House {
         return "I" + "\n" +
                 secondFloor + "\n" +
                 firstFloor;
+    }
+
+    public boolean isHeating() {
+        return isHeating;
+    }
+
+    public List<DoorsAndWIndows> getSecondFloor() {
+        return secondFloor;
+    }
+
+    public List<DoorsAndWIndows> getFirstFloor() {
+        return firstFloor;
     }
 }
