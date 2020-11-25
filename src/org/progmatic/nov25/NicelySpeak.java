@@ -21,10 +21,11 @@ public class NicelySpeak {
 
     }
     public void speakNicely(String s) throws BadLanguageException {
-        if (badWords.contains(s)) {
-            throw new BadLanguageException();
-        } else {
-            System.out.println("Szép szó");
+        for (String badWord : badWords) {
+            if (s.contains(badWord)) {
+                throw new BadLanguageException();
+            }
         }
+        System.out.println("nincs csúnya");
     }
 }
