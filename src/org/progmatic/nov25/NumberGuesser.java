@@ -29,5 +29,6 @@ public class NumberGuesser {
 
         } while (guess != num);
         System.out.println("Kitaláltad");
+        sc.close();
     }
 }
