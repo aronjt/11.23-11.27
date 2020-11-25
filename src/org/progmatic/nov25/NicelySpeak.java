@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class nicelySpeak {
+public class NicelySpeak {
 
     private static final Set<String> badWords = new HashSet<>();
 
@@ -13,7 +13,7 @@ public class nicelySpeak {
         badWords.add("faggot");
         badWords.add("shit");
 
-        nicelySpeak np = new nicelySpeak();
+        NicelySpeak np = new NicelySpeak();
         System.out.println("Bad word checker");
         Scanner sc = new Scanner(System.in);
         String word = sc.nextLine();
