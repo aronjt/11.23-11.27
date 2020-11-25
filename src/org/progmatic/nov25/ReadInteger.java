@@ -19,15 +19,18 @@ public class ReadInteger {
         boolean checker = false;
         System.out.println(requestMessage);
         do {
-            try {
-                num = sc.nextInt();
-                checker = true;
-            }
-            catch (Exception e) {
-                System.out.println(errorMessage);
-                System.out.println(requestMessage);
-                sc = new Scanner(System.in);
-               // num = sc.nextInt();
+            boolean help = false;
+            while (!help) {
+                try {
+                    num = sc.nextInt();
+                    checker = true;
+                    help = true;
+                } catch (Exception e) {
+                    System.out.println(errorMessage);
+                    System.out.println(requestMessage);
+                    sc = new Scanner(System.in);
+                    // num = sc.nextInt();
+                }
             }
         }
         while (!checker);
