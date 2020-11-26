@@ -60,39 +60,75 @@ public class Chess1 {
                 switch (figure) {
                     case '\u2654':
                         whiteKing++;
+                        if (whiteKing > 1) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u2655':
                         whiteQueen++;
+                        if (whiteQueen > 1) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u2656':
                         whiteRook++;
+                        if (whiteRook > 2) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u2657':
                         whiteBishop++;
+                        if (whiteBishop > 2) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u2658':
                         whiteKnight++;
+                        if (whiteKnight > 2) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u2659':
                         whitePawn++;
+                        if (whitePawn > 8) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u265A':
                         blackKing++;
+                        if (blackKing > 1) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u265B':
                         blackQueen++;
+                        if (blackQueen > 1) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u265C':
                         blackRook++;
+                        if (blackRook > 2) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u265D':
                         blackBishop++;
+                        if (blackBishop > 2) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u265E':
                         blackKnight++;
+                        if (blackKnight > 2) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                     case '\u265F':
                         blackPawn++;
+                        if (blackPawn > 8) {
+                            throw new ImpossibleChessSetup();
+                        }
                         break;
                 }
             }
@@ -100,42 +136,6 @@ public class Chess1 {
         }
         if (row != 8) {
             throw new InvalidChessBoardException("Sor hiba");
-        }
-        if (whiteKing > 1) {
-            throw new ImpossibleChessSetup();
-        }
-        if (whiteQueen > 1) {
-            throw new ImpossibleChessSetup();
-        }
-        if (whiteRook > 2) {
-            throw new ImpossibleChessSetup();
-        }
-        if (whiteBishop > 2) {
-            throw new ImpossibleChessSetup();
-        }
-        if (whiteKnight > 2) {
-            throw new ImpossibleChessSetup();
-        }
-        if (whitePawn > 8) {
-            throw new ImpossibleChessSetup();
-        }
-        if (blackKing > 1) {
-            throw new ImpossibleChessSetup();
-        }
-        if (blackQueen > 1) {
-            throw new ImpossibleChessSetup();
-        }
-        if (blackRook > 2) {
-            throw new ImpossibleChessSetup();
-        }
-        if (blackBishop > 2) {
-            throw new ImpossibleChessSetup();
-        }
-        if (blackKnight > 2) {
-            throw new ImpossibleChessSetup();
-        }
-        if (blackPawn > 8) {
-            throw new ImpossibleChessSetup();
         }
     }
 }
