@@ -3,7 +3,6 @@ package org.progmatic.nov26;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,6 +30,15 @@ public class Chess1 {
     public static void main(String[] args) throws FileNotFoundException, InvalidChessBoardException, ImpossibleChessSetup {
         Chess1 chess = new Chess1();
         chess.readInFile("files/bad.txt");
+        chess.printOut();
+        System.out.println("----------------");
+        chess.step("a2", "a4");
+        chess.printOut();
+        System.out.println("----------------");
+        chess.step("d7", "d5");
+        chess.printOut();
+        System.out.println("----------------");
+        chess.step("a4", "d5");
         chess.printOut();
 
     }
@@ -153,5 +161,77 @@ public class Chess1 {
             }
             System.out.println();
         }
+    }
+
+    public void step(String start, String finish) {
+        int startColumn = 0;
+        int startRow = Integer.parseInt(Character.toString(start.charAt(1)));
+        int finishColumn = 0;
+        int finishRow = Integer.parseInt(Character.toString(finish.charAt(1)));
+        switch (start.charAt(0)) {
+            case 'a':
+                startColumn = 0;
+                break;
+            case 'b':
+                startColumn = 1;
+                break;
+            case 'c':
+                startColumn = 2;
+                break;
+            case 'd':
+                startColumn = 3;
+                break;
+            case 'e':
+                startColumn = 4;
+                break;
+            case 'f':
+                startColumn = 5;
+                break;
+            case 'g':
+                startColumn = 6;
+                break;
+            case 'h':
+                startColumn = 7;
+                break;
+        }
+        switch (finish.charAt(0)) {
+            case 'a':
+                finishColumn = 0;
+                break;
+            case 'b':
+                finishColumn = 1;
+                break;
+            case 'c':
+                finishColumn = 2;
+                break;
+            case 'd':
+                finishColumn = 3;
+                break;
+            case 'e':
+                finishColumn = 4;
+                break;
+            case 'f':
+                finishColumn = 5;
+                break;
+            case 'g':
+                finishColumn = 6;
+                break;
+            case 'h':
+                finishColumn = 7;
+                break;
+        }
+        char[][] newBoard = new char[8][8];
+        for (int i = 0; i < newBoard.length; i++) {
+            for (int j = 0; j < newBoard[i].length; j++) {
+                if (i == startRow-1 && j == startColumn) {
+                    newBoard[i][j] = ' ';
+                } else if (i == finishRow-1 && j == finishColumn) {
+                    newBoard[i][j] = CHESSBOARD[startRow-1][startColumn];
+                } else {
+                    newBoard[i][j] = CHESSBOARD[i][j];
+                }
+            }
+        }
+        CHESSBOARD = newBoard;
     }
 }
