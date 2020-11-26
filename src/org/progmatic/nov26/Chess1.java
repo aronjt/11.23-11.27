@@ -3,12 +3,14 @@ package org.progmatic.nov26;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Chess1 {
 
     private static List<Character> CHESSSYMBOLS = new ArrayList<>();
+    private char[][] CHESSBOARD = new char[8][8];
 
     static {
         CHESSSYMBOLS.add('\u2654'); //white king
@@ -29,6 +31,8 @@ public class Chess1 {
     public static void main(String[] args) throws FileNotFoundException, InvalidChessBoardException, ImpossibleChessSetup {
         Chess1 chess = new Chess1();
         chess.readInFile("files/bad.txt");
+        chess.printOut();
+
     }
 
     public void readInFile(String filepath) throws FileNotFoundException, InvalidChessBoardException, ImpossibleChessSetup {
@@ -52,6 +56,7 @@ public class Chess1 {
             if (column != 8) {
                 throw new InvalidChessBoardException("Oszlop hiba");
             }
+            int i = 0;
             for (String s : line) {
                 char figure = s.toCharArray()[0];
                 if (!CHESSSYMBOLS.contains(figure)) {
@@ -131,11 +136,22 @@ public class Chess1 {
                         }
                         break;
                 }
+                CHESSBOARD[row][i] = figure;
+                i++;
             }
             row++;
         }
         if (row != 8) {
             throw new InvalidChessBoardException("Sor hiba");
+        }
+    }
+
+    public void printOut() {
+        for (char[] chars : CHESSBOARD) {
+            for (char aChar : chars) {
+                System.out.print(aChar);
+            }
+            System.out.println();
         }
     }
 }
