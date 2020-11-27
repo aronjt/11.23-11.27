@@ -2,6 +2,9 @@ package org.progmatic.nov27;
 
 public class Martingel extends Person{
 
+    public Martingel(int money) {
+        wallet = money;
+    }
 
     @Override
     public void strategy(RouletteTable rouletteTable) {
