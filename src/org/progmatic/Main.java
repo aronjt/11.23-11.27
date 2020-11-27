@@ -8,6 +8,5 @@ public class Main {
         RouletteTable rouletteTable = new RouletteTable();
         rouletteTable.colourBet("piros", 500);
         rouletteTable.parityBet("páros", 500);
-        System.out.println("kutya");
     }
 }

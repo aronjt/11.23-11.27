@@ -66,6 +66,14 @@ public class RouletteTable {
     }
 
     public int colourBet(String colour, int bet) {
+        if (bet < minBet) {
+            System.out.println("A minimum tét: " + minBet);
+            return bet;
+        }
+        if (bet > maxBet) {
+            System.out.println("A maximum tét: " + maxBet);
+            return bet;
+        }
         int spin = spin();
         if (redNumbers.contains(spin) && colour.equalsIgnoreCase("piros")) {
             System.out.println("Piros " + spin);
@@ -93,6 +101,14 @@ public class RouletteTable {
     }
 
     public int parityBet(String parity, int bet) {
+        if (bet < minBet) {
+            System.out.println("A minimum tét: " + minBet);
+            return bet;
+        }
+        if (bet > maxBet) {
+            System.out.println("A maximum tét: " + maxBet);
+            return bet;
+        }
         int spin = spin();
         if (spin % 2 == 0 && parity.equalsIgnoreCase("páros") && spin !=0) {
             if (redNumbers.contains(spin)) {
