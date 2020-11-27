@@ -10,6 +10,10 @@ public abstract class Person {
         this.bet = bet;
     }
 
+    public Person(int wallet) {
+        this.wallet = wallet;
+    }
+
     public abstract void strategy(RouletteTable rouletteTable);
 
     public abstract int getWallet();
