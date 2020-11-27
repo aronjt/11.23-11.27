@@ -1,14 +1,12 @@
 package org.progmatic;
 
 import org.progmatic.nov23.House;
+import org.progmatic.nov27.RouletteTable;
 
 public class Main {
     public static void main(String[] args) {
-        House house = new House();
-        System.out.println(house);
-        house.heating();
-        System.out.println(house);
-        house.demist();
-        System.out.println(house);
+        RouletteTable rouletteTable = new RouletteTable();
+        rouletteTable.colourBet("piros", 500);
+        rouletteTable.parityBet("páros", 500);
     }
 }

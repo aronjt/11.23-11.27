@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Chess1 {
 
-    private static List<Character> CHESSSYMBOLS = new ArrayList<>();
+    private static final List<Character> CHESSSYMBOLS = new ArrayList<>();
     private char[][] CHESSBOARD = new char[8][8];
 
     static {
