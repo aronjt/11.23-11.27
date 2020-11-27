@@ -19,5 +19,6 @@ public class Martingel extends Person{
         } else {
             bet += bet;
         }
+        System.out.println("Jelenleg ennyi pénzed van:" + wallet);
     }
 }
