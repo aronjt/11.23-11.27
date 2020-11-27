@@ -168,4 +168,31 @@ public class RouletteTable {
         }
         return 0;
     }
+
+    public int numberBet(int number, int bet) {
+        int spin = spin();
+        if (redNumbers.contains(spin) && spin == number) {
+            System.out.println("Piros " + spin);
+            System.out.println("Nyertél: " + bet * 35);
+            return bet * 35;
+        } else if (redNumbers.contains(spin)) {
+            System.out.println("Piros " + spin);
+            System.out.println("Vesztettél: " + (-bet));
+            return 0;
+        }
+        if (blackNumbers.contains(spin) && spin == number) {
+            System.out.println("Fekete " + spin);
+            System.out.println("Nyertél: " + bet * 35);
+            return bet * 35;
+        } else if (blackNumbers.contains(spin)) {
+            System.out.println("Fekete " + spin);
+            System.out.println("Vesztettél: " + (-bet));
+            return 0;
+        }
+        if (spin == 0) {
+            System.out.println("Zöld " + spin);
+            System.out.println("Vesztettél: " + (-bet));
+        }
+        return 0;
+    }
 }
