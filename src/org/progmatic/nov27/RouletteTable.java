@@ -63,6 +63,14 @@ public class RouletteTable {
         this.maxBet = maxBet;
     }
 
+    public int getMinBet() {
+        return minBet;
+    }
+
+    public int getMaxBet() {
+        return maxBet;
+    }
+
     private int spin() {
         return (int)(Math.random()*37);
     }
