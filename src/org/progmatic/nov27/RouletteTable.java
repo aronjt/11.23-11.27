@@ -13,7 +13,9 @@ public class RouletteTable {
     private int minBet;
     private int maxBet;
 
-    public RouletteTable() {
+    public RouletteTable(int minBet, int maxBet) {
+        this.minBet = minBet;
+        this.maxBet = maxBet;
         greenNumbers.add(0);
         redNumbers.add(1);
         redNumbers.add(3);
