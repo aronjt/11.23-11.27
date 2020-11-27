@@ -8,7 +8,12 @@ public class Martingel extends Person{
         String color = "piros";
         int bet = rouletteTable.getMinBet();
         wallet -= bet;
-        wallet += rouletteTable.colourBet(color,bet);
-
+        int winLoss = rouletteTable.colourBet(color,bet);
+        if (winLoss > 0){
+            wallet += winLoss;
+            bet = rouletteTable.getMinBet();
+        } else {
+            bet += bet;
+        }
     }
 }
