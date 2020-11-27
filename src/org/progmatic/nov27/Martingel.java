@@ -4,12 +4,13 @@ public class Martingel extends Person{
 
     public Martingel(int money) {
         wallet = money;
+
     }
 
     @Override
     public void strategy(RouletteTable rouletteTable) {
         String color = "piros";
-        int bet = rouletteTable.getMinBet();
+        bet = rouletteTable.getMinBet();
         wallet -= bet;
         int winLoss = rouletteTable.colourBet(color,bet);
         if (winLoss > 0){
