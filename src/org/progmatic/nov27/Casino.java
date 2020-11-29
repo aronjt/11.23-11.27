@@ -66,6 +66,10 @@ public class Casino {
                     System.out.println("Ennyi pénzed van: " + wallet);
                     break;
             }
+            if (wallet < rouletteTable.getMinBet()) {
+                game = "vége";
+                System.out.println("Elfogyott a pénzed");
+            }
         }
 
         while (!game.equals("vége"));
