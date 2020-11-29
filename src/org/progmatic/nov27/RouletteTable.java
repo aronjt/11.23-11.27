@@ -76,12 +76,7 @@ public class RouletteTable {
     }
 
     public int colourBet(String colour, int bet) {
-        if (bet < minBet) {
-            System.out.println("A minimum tét: " + minBet);
-            return bet;
-        }
-        if (bet > maxBet) {
-            System.out.println("A maximum tét: " + maxBet);
+        if (minMaxBetCheck(bet)) {
             return bet;
         }
         int spin = spin();
@@ -111,54 +106,37 @@ public class RouletteTable {
     }
 
     public int parityBet(String parity, int bet) {
-        if (bet < minBet) {
-            System.out.println("A minimum tét: " + minBet);
-            return bet;
-        }
-        if (bet > maxBet) {
-            System.out.println("A maximum tét: " + maxBet);
+        if (minMaxBetCheck(bet)) {
             return bet;
         }
         int spin = spin();
         if (spin % 2 == 0 && parity.equalsIgnoreCase("páros") && spin !=0) {
-            if (redNumbers.contains(spin)) {
-                System.out.println("Piros " + spin);
+            if (redWin(spin)) {
                 System.out.println("Nyeremény: " + bet * 2);
                 return bet * 2;
-            } else if (blackNumbers.contains(spin)) {
-                System.out.println("Fekete " + spin);
+            } else if (blackWin(spin)) {
                 System.out.println("Nyeremény: " + bet * 2);
                 return bet * 2;
             }
         } else if (spin % 2 == 0 && spin != 0) {
-            if (redNumbers.contains(spin)) {
-                System.out.println("Piros " + spin);
-                System.out.println("Vesztettél: " + (-bet));
+            if (redLost(spin, bet)) {
                 return 0;
-            } else if (blackNumbers.contains(spin)) {
-                System.out.println("Fekete " + spin);
-                System.out.println("Vesztettél: " + (-bet));
+            } else if (blackLost(spin, bet)) {
                 return 0;
             }
         }
         if (spin % 2 != 0 && parity.equalsIgnoreCase("páratlan")) {
-            if (redNumbers.contains(spin)) {
-                System.out.println("Piros " + spin);
+            if (redWin(spin)) {
                 System.out.println("Nyeremény: " + bet * 2);
                 return bet * 2;
-            } else if (blackNumbers.contains(spin)) {
-                System.out.println("Fekete " + spin);
+            } else if (blackWin(spin)) {
                 System.out.println("Nyeremény: " + bet * 2);
                 return bet * 2;
             }
         } else if (spin % 2 != 0) {
-            if (redNumbers.contains(spin)) {
-                System.out.println("Piros " + spin);
-                System.out.println("Vesztettél: " + (-bet));
+            if (redLost(spin, bet)) {
                 return 0;
-            } else if (blackNumbers.contains(spin)) {
-                System.out.println("Fekete " + spin);
-                System.out.println("Vesztettél: " + (-bet));
+            } else if (blackLost(spin, bet)) {
                 return 0;
             }
         }
@@ -170,10 +148,17 @@ public class RouletteTable {
     }
 
     public int numberBet(int number, int bet) {
+        if (minMaxBetCheck(bet)) {
+            return bet;
+        }
+        if (number > 36) {
+            System.out.println("36 a legnagyobb szám");
+            return bet;
+        }
         int spin = spin();
         if (redNumbers.contains(spin) && spin == number) {
             System.out.println("Piros " + spin);
-            System.out.println("Nyertél: " + bet * 35);
+            System.out.println("Nyertél: " + bet * 36);
             return bet * 35;
         } else if (redNumbers.contains(spin)) {
             System.out.println("Piros " + spin);
@@ -182,7 +167,7 @@ public class RouletteTable {
         }
         if (blackNumbers.contains(spin) && spin == number) {
             System.out.println("Fekete " + spin);
-            System.out.println("Nyertél: " + bet * 35);
+            System.out.println("Nyertél: " + bet * 36);
             return bet * 35;
         } else if (blackNumbers.contains(spin)) {
             System.out.println("Fekete " + spin);
@@ -194,5 +179,104 @@ public class RouletteTable {
             System.out.println("Vesztettél: " + (-bet));
         }
         return 0;
+    }
+
+    public int thirdBet(int third, int bet) {
+        if (minMaxBetCheck(bet)) {
+            return bet;
+        }
+        int spin = spin();
+        if (spin <= 12 && third == 1) {
+            if (redWin(spin)) {
+                System.out.println("Nyeremény: " + bet * 3);
+                return bet * 3;
+            } else if (blackWin(spin)) {
+                System.out.println("Nyeremény: " + bet * 3);
+                return bet * 3;
+            }
+        } else if (spin <= 12) {
+            if (redLost(spin, bet)) {
+                return 0;
+            } else if (blackLost(spin, bet)) {
+                return 0;
+            }
+        }
+        if (spin > 12 && spin <= 24 && third == 2) {
+            if (redWin(spin)) {
+                System.out.println("Nyeremény: " + bet * 3);
+                return bet * 3;
+            } else if (blackWin(spin)) {
+                System.out.println("Nyeremény: " + bet * 3);
+                return bet * 3;
+            }
+        } else if (spin > 12 && spin <= 24) {
+            if (redLost(spin, bet)) {
+                return 0;
+            } else if (blackLost(spin, bet)) {
+                return 0;
+            }
+        }
+        if (spin > 24 && third == 3) {
+            if (redWin(spin)) {
+                System.out.println("Nyeremény: " + bet * 3);
+                return bet * 3;
+            } else if (blackWin(spin)) {
+                System.out.println("Nyeremény: " + bet * 3);
+                return bet * 3;
+            }
+        } else if (spin > 24) {
+            if (redLost(spin, bet)) {
+                return 0;
+            } else if (blackLost(spin, bet)) {
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    public boolean redWin(int spin) {
+        if (redNumbers.contains(spin)) {
+            System.out.println("Piros " + spin);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean redLost(int spin, int bet) {
+        if (redNumbers.contains(spin)) {
+            System.out.println("Piros " + spin);
+            System.out.println("Vesztettél: " + (-bet));
+            return true;
+        }
+        return false;
+    }
+
+    public boolean blackWin(int spin) {
+        if (blackNumbers.contains(spin)) {
+            System.out.println("Fekete " + spin);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean blackLost(int spin, int bet) {
+        if (blackNumbers.contains(spin)) {
+            System.out.println("Fekete " + spin);
+            System.out.println("Vesztettél: " + (-bet));
+            return true;
+        }
+        return false;
+    }
+
+    public boolean minMaxBetCheck(int bet) {
+        if (bet < minBet) {
+            System.out.println("A minimum tét: " + minBet);
+            return true;
+        }
+        if (bet > maxBet) {
+            System.out.println("A maximum tét: " + maxBet);
+            return true;
+        }
+        return false;
     }
 }

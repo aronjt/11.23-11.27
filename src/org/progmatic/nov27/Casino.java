@@ -32,6 +32,7 @@ public class Casino {
                 int winLoss = rouletteTable.colourBet(color, bet);
                 wallet += winLoss;
                 System.out.println("Ennyi pénzed van: " + wallet);
+                break;
             case "paritás":
                 System.out.println("Páros vagy páratlan?");
                 String parity = scString.nextLine();
@@ -41,7 +42,27 @@ public class Casino {
                 winLoss = rouletteTable.parityBet(parity, bet);
                 wallet += winLoss;
                 System.out.println("Ennyi pénzed van: " + wallet);
-
+                break;
+            case "szám":
+                System.out.println("Melyik számra teszel?");
+                int number = scInt.nextInt();
+                System.out.print("Tét: ");
+                bet = scInt.nextInt();
+                wallet -= bet;
+                winLoss = rouletteTable.numberBet(number, bet);
+                wallet += winLoss;
+                System.out.println("Ennyi pénzed van: " + wallet);
+                break;
+            case "harmad":
+                System.out.println("Hanyadik harmadra teszel?");
+                number = scInt.nextInt();
+                System.out.print("Tét: ");
+                bet = scInt.nextInt();
+                wallet -= bet;
+                winLoss = rouletteTable.thirdBet(number, bet);
+                wallet += winLoss;
+                System.out.println("Ennyi pénzed van: " + wallet);
+                break;
         }
     }
 }
