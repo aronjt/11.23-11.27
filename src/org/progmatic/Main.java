@@ -7,6 +7,6 @@ public class Main {
         RouletteTable rouletteTable = new RouletteTable(100,10000);
         Casino casino = new Casino();
         System1326 system1326 = new System1326(10000, 100);
-        casino.rouletteSimulation(system1326, rouletteTable);
+        casino.rouletteGame(rouletteTable);
     }
 }
