@@ -99,8 +99,15 @@ public class Casino {
                     break;
             }
             if (wallet < rouletteTable.getMinBet()) {
-                game = "vége";
                 System.out.println("Elfogyott a pénzed");
+                System.out.print("Helyezzen be pénz: ");
+                try {
+                    wallet += scInt.nextInt();
+                }
+                catch (Exception e) {
+                    System.out.println("Játék vége");
+                    game = "vége";
+                }
             }
         }
 
