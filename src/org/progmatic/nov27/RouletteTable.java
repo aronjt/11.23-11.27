@@ -10,7 +10,6 @@ public class RouletteTable {
     private final List<Integer> blackNumbers = new ArrayList<>();
     private final int minBet;
     private final int maxBet;
-    private final List<String> spins = new ArrayList<>();
 
     public RouletteTable(int minBet, int maxBet) {
         this.minBet = minBet;
@@ -62,19 +61,11 @@ public class RouletteTable {
         return maxBet;
     }
 
-    public List<String> getSpins() {
-        return spins;
-    }
 
     public int spin() {
         return (int)(Math.random()*37);
     }
 
-    public void freeColourBet() {
-        for (int i = 0; i < 100; i++) {
-            spin();
-        }
-    }
 
     public int colourBet(String colour, int bet) {
         if (minMaxBetCheck(bet)) {
@@ -298,7 +289,4 @@ public class RouletteTable {
         return redNumbers;
     }
 
-    public List<Integer> getBlackNumbers() {
-        return blackNumbers;
-    }
 }
