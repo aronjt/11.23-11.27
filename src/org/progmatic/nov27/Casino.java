@@ -28,8 +28,11 @@ public class Casino {
                     System.out.println("Melyikre színre teszel?");
                     System.out.println("Piros / Fekete");
                     String color = scString.nextLine();
-                    System.out.print("Tét: ");
-                    bet = scInt.nextInt();
+                    do {
+                        System.out.print("Tét: ");
+                        bet = scInt.nextInt();
+                    }
+                    while (bet > wallet);
                     wallet -= bet;
                     int winLoss = rouletteTable.colourBet(color, bet);
                     wallet += winLoss;
@@ -38,28 +41,57 @@ public class Casino {
                 case "paritás":
                     System.out.println("Páros vagy páratlan?");
                     String parity = scString.nextLine();
-                    System.out.print("Tét: ");
-                    bet = scInt.nextInt();
+                    do {
+                        System.out.print("Tét: ");
+                        bet = scInt.nextInt();
+                    }
+                    while (bet > wallet);
                     wallet -= bet;
                     winLoss = rouletteTable.parityBet(parity, bet);
                     wallet += winLoss;
                     System.out.println("Ennyi pénzed van: " + wallet);
                     break;
                 case "szám":
+                    int number = 0;
+                    boolean check = false;
                     System.out.println("Melyik számra teszel?");
-                    int number = scInt.nextInt();
-                    System.out.print("Tét: ");
-                    bet = scInt.nextInt();
+                    while (!check) {
+                        try {
+                            number = scInt.nextInt();
+                            check = true;
+                        } catch (Exception e) {
+                            System.out.println("Számot írj be");
+                            scInt = new Scanner(System.in);
+                        }
+                    }
+                    do {
+                        System.out.print("Tét: ");
+                        bet = scInt.nextInt();
+                    }
+                    while (bet > wallet);
                     wallet -= bet;
                     winLoss = rouletteTable.numberBet(number, bet);
                     wallet += winLoss;
                     System.out.println("Ennyi pénzed van: " + wallet);
                     break;
                 case "harmad":
+                    number = 0;
+                    check = false;
                     System.out.println("Hanyadik harmadra teszel?");
-                    number = scInt.nextInt();
-                    System.out.print("Tét: ");
-                    bet = scInt.nextInt();
+                    while (!check) {
+                        try {
+                            number = scInt.nextInt();
+                            check = true;
+                        } catch (Exception e) {
+                            System.out.println("Számot írj be");
+                            scInt = new Scanner(System.in);
+                        }
+                    }
+                    do {
+                        System.out.print("Tét: ");
+                        bet = scInt.nextInt();
+                    }
+                    while (bet > wallet);
                     wallet -= bet;
                     winLoss = rouletteTable.thirdBet(number, bet);
                     wallet += winLoss;

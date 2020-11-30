@@ -47,11 +47,11 @@ public class System1326 extends Person{
 
     @Override
     public int getWallet() {
-        return 0;
+        return wallet;
     }
 
     @Override
     public int getBet() {
-        return 0;
+        return bet;
     }
 }

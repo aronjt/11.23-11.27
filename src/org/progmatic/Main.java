@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         RouletteTable rouletteTable = new RouletteTable(100,10000);
         Casino casino = new Casino();
-        System1326 system1326 = new System1326(10000, 100);
+        System1326 system1326 = new System1326(100000, 500);
         casino.rouletteGame(rouletteTable);
     }
 }
