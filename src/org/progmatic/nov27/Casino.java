@@ -25,9 +25,13 @@ public class Casino {
             game = scString.nextLine().toLowerCase();
             switch (game) {
                 case "szín":
-                    System.out.println("Melyikre színre teszel?");
-                    System.out.println("Piros / Fekete");
-                    String color = scString.nextLine();
+                    String color;
+                    do {
+                        System.out.println("Melyikre színre teszel?");
+                        System.out.println("Piros / Fekete");
+                        color = scString.nextLine().toLowerCase();
+                    }
+                    while (!color.equals("piros") && !color.equals("fekete"));
                     do {
                         System.out.print("Tét: ");
                         bet = scInt.nextInt();
@@ -39,8 +43,12 @@ public class Casino {
                     System.out.println("Ennyi pénzed van: " + wallet);
                     break;
                 case "paritás":
-                    System.out.println("Páros vagy páratlan?");
-                    String parity = scString.nextLine();
+                    String parity;
+                    do {
+                        System.out.println("Páros vagy páratlan?");
+                        parity = scString.nextLine().toLowerCase();
+                    }
+                    while (!parity.equals("páros") && !parity.equals("páratlan"));
                     do {
                         System.out.print("Tét: ");
                         bet = scInt.nextInt();
@@ -57,7 +65,11 @@ public class Casino {
                     System.out.println("Melyik számra teszel?");
                     while (!check) {
                         try {
-                            number = scInt.nextInt();
+                            do {
+                                System.out.println("0 - 36");
+                                number = scInt.nextInt();
+                            }
+                            while (number > 36);
                             check = true;
                         } catch (Exception e) {
                             System.out.println("Számot írj be");
@@ -80,7 +92,11 @@ public class Casino {
                     System.out.println("Hanyadik harmadra teszel?");
                     while (!check) {
                         try {
-                            number = scInt.nextInt();
+                            do {
+                                System.out.println("1 / 2 / 3");
+                                number = scInt.nextInt();
+                            }
+                            while (number != 1 && number != 2 && number != 3);
                             check = true;
                         } catch (Exception e) {
                             System.out.println("Számot írj be");

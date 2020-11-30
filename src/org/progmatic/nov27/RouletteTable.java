@@ -80,29 +80,34 @@ public class RouletteTable {
             return bet;
         }
         int spin = spin();
-        if (redNumbers.contains(spin) && colour.equalsIgnoreCase("piros")) {
-            System.out.println("Piros " + spin);
-            System.out.println("Nyeremény: " + bet * 2);
-            return bet * 2;
-        } else if (redNumbers.contains(spin)) {
-            System.out.println("Piros " + spin);
-            System.out.println("Vesztettél: " + (-bet));
-            return 0;
-        }
-        if (blackNumbers.contains(spin) && colour.equalsIgnoreCase("fekete")) {
-            System.out.println("Fekete " + spin);
-            System.out.println("Nyeremény: " + bet * 2);
-            return bet * 2;
-        } else if (blackNumbers.contains(spin)) {
-            System.out.println("Fekete " + spin);
-            System.out.println("Vesztettél: " + (-bet));
-            return 0;
+        switch (colour) {
+            case "piros":
+                if (redNumbers.contains(spin)) {
+                    System.out.println("Piros " + spin);
+                    System.out.println("Nyeremény: " + bet * 2);
+                    return bet * 2;
+                } else {
+                    System.out.println("Piros " + spin);
+                    System.out.println("Vesztettél: " + (-bet));
+                    return 0;
+                }
+            case "fekete":
+                if (blackNumbers.contains(spin)) {
+                    System.out.println("Fekete " + spin);
+                    System.out.println("Nyeremény: " + bet * 2);
+                    return bet * 2;
+                } else {
+                    System.out.println("Fekete " + spin);
+                    System.out.println("Vesztettél: " + (-bet));
+                    return 0;
+                }
         }
         if (greenNumbers.contains(spin)) {
             System.out.println("Zöld " + spin);
             System.out.println("Vesztettél: " + (-bet));
+            return 0;
         }
-        return 0;
+        return bet;
     }
 
     public int parityBet(String parity, int bet) {
@@ -110,35 +115,39 @@ public class RouletteTable {
             return bet;
         }
         int spin = spin();
-        if (spin % 2 == 0 && parity.equalsIgnoreCase("páros") && spin !=0) {
-            if (redWin(spin)) {
-                System.out.println("Nyeremény: " + bet * 2);
-                return bet * 2;
-            } else if (blackWin(spin)) {
-                System.out.println("Nyeremény: " + bet * 2);
-                return bet * 2;
-            }
-        } else if (spin % 2 == 0 && spin != 0) {
-            if (redLost(spin, bet)) {
-                return 0;
-            } else if (blackLost(spin, bet)) {
-                return 0;
-            }
-        }
-        if (spin % 2 != 0 && parity.equalsIgnoreCase("páratlan")) {
-            if (redWin(spin)) {
-                System.out.println("Nyeremény: " + bet * 2);
-                return bet * 2;
-            } else if (blackWin(spin)) {
-                System.out.println("Nyeremény: " + bet * 2);
-                return bet * 2;
-            }
-        } else if (spin % 2 != 0) {
-            if (redLost(spin, bet)) {
-                return 0;
-            } else if (blackLost(spin, bet)) {
-                return 0;
-            }
+        switch (parity) {
+            case "páros":
+                if (spin % 2 == 0 && spin !=0) {
+                    if (redWin(spin)) {
+                        System.out.println("Nyeremény: " + bet * 2);
+                        return bet * 2;
+                    } else if (blackWin(spin)) {
+                        System.out.println("Nyeremény: " + bet * 2);
+                        return bet * 2;
+                    }
+                } else {
+                    if (redLost(spin, bet)) {
+                        return 0;
+                    } else if (blackLost(spin, bet)) {
+                        return 0;
+                    }
+                }
+            case "páratlan":
+                if (spin % 2 != 0) {
+                    if (redWin(spin)) {
+                        System.out.println("Nyeremény: " + bet * 2);
+                        return bet * 2;
+                    } else if (blackWin(spin)) {
+                        System.out.println("Nyeremény: " + bet * 2);
+                        return bet * 2;
+                    }
+                } else {
+                    if (redLost(spin, bet)) {
+                        return 0;
+                    } else if (blackLost(spin, bet)) {
+                        return 0;
+                    }
+                }
         }
         if (spin == 0) {
             System.out.println("Zöld " + spin);
@@ -149,10 +158,6 @@ public class RouletteTable {
 
     public int numberBet(int number, int bet) {
         if (minMaxBetCheck(bet)) {
-            return bet;
-        }
-        if (number > 36) {
-            System.out.println("36 a legnagyobb szám");
             return bet;
         }
         int spin = spin();
