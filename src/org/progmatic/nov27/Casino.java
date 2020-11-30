@@ -129,6 +129,7 @@ public class Casino {
 
         while (!game.equals("vége"));
         System.out.println("Köszönöm a játékot");
+        System.out.println("Kifizetés Papp Gergőnél van");
 
     }
 }
