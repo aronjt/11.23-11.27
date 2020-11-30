@@ -15,7 +15,16 @@ public class Casino {
     public void rouletteGame(RouletteTable rouletteTable) {
         Scanner scInt = new Scanner(System.in);
         System.out.print("Kezdő pénz: ");
-        int wallet = scInt.nextInt();
+        int wallet = 0;
+        while (wallet <= 0) {
+            try {
+                wallet = scInt.nextInt();
+                System.out.println("Kassza: " + wallet);
+            } catch (Exception e) {
+                System.out.println("Számot írj be");
+                scInt = new Scanner(System.in);
+            }
+        }
         int bet;
         String game;
         Scanner scString = new Scanner(System.in);
@@ -129,7 +138,10 @@ public class Casino {
 
         while (!game.equals("vége"));
         System.out.println("Köszönöm a játékot");
-        System.out.println("Kifizetés Papp Gergőnél van");
+        if (wallet > 0) {
+            System.out.println("Kifizetés Papp Gergőnél van");
+            System.out.println("Összeg: " + wallet + " HUF");
+        }
 
     }
 }

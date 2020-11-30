@@ -86,8 +86,12 @@ public class RouletteTable {
                     System.out.println("Piros " + spin);
                     System.out.println("Nyeremény: " + bet * 2);
                     return bet * 2;
+                } else if (spin == 0) {
+                    System.out.println("Zöld " + spin);
+                    System.out.println("Vesztettél: " + (-bet));
+                    return 0;
                 } else {
-                    System.out.println("Piros " + spin);
+                    System.out.println("Fekete " + spin);
                     System.out.println("Vesztettél: " + (-bet));
                     return 0;
                 }
@@ -96,8 +100,12 @@ public class RouletteTable {
                     System.out.println("Fekete " + spin);
                     System.out.println("Nyeremény: " + bet * 2);
                     return bet * 2;
+                } else if (spin == 0) {
+                    System.out.println("Zöld " + spin);
+                    System.out.println("Vesztettél: " + (-bet));
+                    return 0;
                 } else {
-                    System.out.println("Fekete " + spin);
+                    System.out.println("Piros " + spin);
                     System.out.println("Vesztettél: " + (-bet));
                     return 0;
                 }
