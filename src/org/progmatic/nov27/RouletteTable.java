@@ -1,17 +1,15 @@
 package org.progmatic.nov27;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RouletteTable {
 
     private final List<Integer> greenNumbers = new ArrayList<>();
     private final List<Integer> redNumbers = new ArrayList<>();
     private final List<Integer> blackNumbers = new ArrayList<>();
-    private int minBet;
-    private int maxBet;
+    private final int minBet;
+    private final int maxBet;
 
     public RouletteTable(int minBet, int maxBet) {
         this.minBet = minBet;
@@ -53,14 +51,6 @@ public class RouletteTable {
         blackNumbers.add(31);
         blackNumbers.add(33);
         blackNumbers.add(35);
-    }
-
-    public void setMinBet(int minBet) {
-        this.minBet = minBet;
-    }
-
-    public void setMaxBet(int maxBet) {
-        this.maxBet = maxBet;
     }
 
     public int getMinBet() {
