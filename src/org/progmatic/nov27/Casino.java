@@ -1,5 +1,7 @@
 package org.progmatic.nov27;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Casino {
@@ -10,6 +12,10 @@ public class Casino {
             person.strategy(rouletteTable);
         }
         while (person.getBet() < person.getWallet());
+    }
+
+    public void rouletteOneSimulation(Person person, RouletteTable rouletteTable) {
+        person.strategy(rouletteTable);
     }
 
     public void rouletteGame(RouletteTable rouletteTable) {
