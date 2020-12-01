@@ -9,6 +9,6 @@ public class Main {
         System1326 system1326 = new System1326(100000, 500);
         Martingel martingel = new Martingel(100000, rouletteTable.getMinBet());
         AfterSameBet afterSameBet = new AfterSameBet(10000, 500);
-        casino.rouletteSimulation(afterSameBet, rouletteTable);
+        casino.rouletteGame(rouletteTable);
     }
 }

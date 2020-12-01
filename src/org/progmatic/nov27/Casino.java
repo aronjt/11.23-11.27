@@ -29,7 +29,7 @@ public class Casino {
                 scInt = new Scanner(System.in);
             }
         }
-        int bet;
+        int bet = 10000000;
         String game;
         Scanner scString = new Scanner(System.in);
         do {
@@ -46,8 +46,13 @@ public class Casino {
                     }
                     while (!color.equals("piros") && !color.equals("fekete"));
                     do {
-                        System.out.print("Tét: ");
-                        bet = scInt.nextInt();
+                        try {
+                            System.out.print("Tét: ");
+                            bet = scInt.nextInt();
+                        } catch (Exception e) {
+                            System.out.println("Számot írj be");
+                            scInt = new Scanner(System.in);
+                        }
                     }
                     while (bet > wallet);
                     wallet -= bet;
@@ -63,8 +68,13 @@ public class Casino {
                     }
                     while (!parity.equals("páros") && !parity.equals("páratlan"));
                     do {
-                        System.out.print("Tét: ");
-                        bet = scInt.nextInt();
+                        try {
+                            System.out.print("Tét: ");
+                            bet = scInt.nextInt();
+                        } catch (Exception e) {
+                            System.out.println("Számot írj be");
+                            scInt = new Scanner(System.in);
+                        }
                     }
                     while (bet > wallet);
                     wallet -= bet;
@@ -90,8 +100,13 @@ public class Casino {
                         }
                     }
                     do {
-                        System.out.print("Tét: ");
-                        bet = scInt.nextInt();
+                        try {
+                            System.out.print("Tét: ");
+                            bet = scInt.nextInt();
+                        } catch (Exception e) {
+                            System.out.println("Számot írj be");
+                            scInt = new Scanner(System.in);
+                        }
                     }
                     while (bet > wallet);
                     wallet -= bet;
@@ -117,8 +132,13 @@ public class Casino {
                         }
                     }
                     do {
-                        System.out.print("Tét: ");
-                        bet = scInt.nextInt();
+                        try {
+                            System.out.print("Tét: ");
+                            bet = scInt.nextInt();
+                        } catch (Exception e) {
+                            System.out.println("Számot írj be");
+                            scInt = new Scanner(System.in);
+                        }
                     }
                     while (bet > wallet);
                     wallet -= bet;
@@ -139,8 +159,11 @@ public class Casino {
                 }
             }
         }
-
         while (!game.equals("vége"));
+
+        scInt.close();
+        scString.close();
+
         System.out.println("Köszönöm a játékot");
         if (wallet > 0) {
             System.out.println("Kifizetés Papp Gergőnél van");
